@@ -1,0 +1,136 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// 1. Demander des mots clés et une bibliographie.
+//
+// 2. Avec la bibliographie et par javascript, pour chacun des articles dans la bibliographie, obtenir la liste des articles similaires et des articles ayant cité cet article (pool 1).
+//
+// 3. Avec les mots clés faire une revue des articles dans le domaine (pool 2).
+//
+// 4. Avec les mots clés, sélectionner un pool d'articles qui correspondent bien aux mots clés (pool 0).
+//
+// 5. Générer un abstract coté serveur et le présenter à l'utiisateur avec des mots clés et un poids réglable pour chaque mot clé.
+//
+// 6. Laisser l'utilisateur obtenir l'abstract qu'il désire en jouant sur le poids de chaque mots clés.
+//
+// 7. Noter chaque poids de mot clé.
+//
+// 8. Générer un article complet et proposer son achat à l'utilisateur.
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Complex Search Terms
+// --------------------
+//
+// So far, we have chosen some search terms, defined as single words, to use as queries,
+// and added them to our object.
+//
+// Sometimes we might want more control than just using single words, in which case we might
+// want to add synonyms and/or use include inclusions or exclusion words.
+//
+// Synonyms
+// ~~~~~~~~
+//
+// To include synonyms, just add more entries to the input list of terms.
+//
+// Multiple strings within the same list are combined with the 'OR' operator. This means
+// results will be returned if they include any of the given terms.
+//
+// For example, the set of search terms ['brain', 'cortex'] is interpreted as:
+// '("brain"OR"cortex")'.
+//
+// Being able to include synonyms is the reason each term entry is itself a list.
+//
+// Inclusion & Exclusion Words
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//
+// Sometimes we might need to control the returned results, by specifically including
+// or excluding certain topics or results. We can do so by adding 'inclusion' and/or
+// 'exclusion' words.
+//
+// Inclusions words are words that must also appear for a result to be returned.
+// Inclusions words are combined with the 'AND' operator, meaning entries
+// will only be included if they also include these words.
+//
+// For example, the search terms ['brain', 'cortex'] with the inclusion word ['biology']
+// is interpreted as '("brain"OR"cortex")AND("biology")'.
+//
+// Exclusions words are words that must not be included in a result for it to be returned.
+// Exclusion words are combined with the 'NOT' operator, meaning entries
+// will be excluded if they include these terms.
+//
+// For example, the search terms ['brain', 'cortex'] with the exclusion word ['body']
+// is interpreted as '("brain"OR"cortex")NOT("body")'.
+//
+// Putting it all Together
+// ~~~~~~~~~~~~~~~~~~~~~~~
+//
+// Synonyms, inclusion and exclusion words can all be used together.
+// You can also specify synonyms for inclusion and exclusion words.
+//
+// For example, the following set of search term components:
+//
+// - search terms ['brain', 'cortex']
+// - inclusion words ['biology', 'biochemistry']
+// - exclusion words ['body', 'corporeal']
+//
+// All combine to give the search term of:
+//
+// - `'("brain"OR"cortex")AND("biology"OR"biochemistry")NOT("body"OR"corporeal")'`
+//
+// Inclusion and exclusion words should be lists of the same length as the number of
+// search terms. Each inclusion and exclusion term is used for the corresponding search
+// term, matched by index. An empty list is used to indicate that there are no inclusions
+// or exclusions words for a given search term.
+//
+// Now let's update our set of terms, to include some synonyms, inclusions and exclusions.
+//
+/////////////////////////////////////////////////////////////////////////////////
+//
+// Find keywords of a PMID.
+// 
+//https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=11748933,11700088&retmode=xml
+// <MeshHeading>
+// <DescriptorName UI="D012662" MajorTopicYN="N">Semen Preservation</DescriptorName>
+// <QualifierName UI="Q000009" MajorTopicYN="N">adverse effects</QualifierName>
+// <QualifierName UI="Q000379" MajorTopicYN="Y">methods</QualifierName>
+// </MeshHeading>
+//
+/////////////////////////////////////////////////////////////////////////////////
+//
+// Find all related articles for a PMID.
+// 
+// https://eutils.ncbi.nlm.nih.gov/entrez/eutils/elink.fcgi?dbfrom=pubmed&db=pubmed&id=19879512
+// 
+/////////////////////////////////////////////////////////////////////////////////
+//
+// Spelling suggestions
+//
+// https://eutils.ncbi.nlm.nih.gov/entrez/eutils/espell.fcgi?db=pubmed&term=asthmaa+OR+alergies
+// 
+/////////////////////////////////////////////////////////////////////////////////
+//
+// The upper category of an animal
+//
+// https://www.ncbi.nlm.nih.gov/taxonomy/?term=%22homo+sapiens%22
+//
+// <p class="desc">(human), species, primates</p>
+//
+// ou encore
+//
+// https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=taxonomy&id=9913,30521
+//
+//
+
+
+
+
+You build a mind map style plan with part > chapter > section > subsection > sub-sub-section / figures / tables > a few words.
+
+Then you manage everything at the lowest level, you determine how many paragraphs you need and when.
+
+You pick paragraphs at random even if you don't have the results or good things to say you write the vomit draft of that paragraph.
+
+Then you just pick one that is already written and edit it.
+
+Repeat until you run out of time.
+
+You need the concept of progress percentage and remaining time. You also need to know that you have done enough work to write a thesis or if you need to do more work, and how much work you actually need. The definition here is also that a paragraph is around 3-5 sentences, with a sentence being around 10 words. This feeling of not writing is the mind killer

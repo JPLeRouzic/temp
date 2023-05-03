@@ -1,0 +1,18 @@
+.pubmed_clear {
+	clear: both;
+}
+.pubmed_article {
+	margin-bottom: 10px;
+}		
+.pubmed_author {
+	float: left;
+	margin-right: 5px;
+}
+.pubmed_publicationDetails {
+	clear: both;
+	font-style: italic;
+}
+.pubmed_abstractExpander, .pubmed_detailsExpander {
+	float: left;
+	margin-right: 5px;
+}

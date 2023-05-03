@@ -1,0 +1,633 @@
+ 
+-----------------------
+4  
+My dog runs very fast.
+
+My ______ PP$
+dog ______ NN1
+runs ______ VVZ
+very ______ AV0
+fast ______ AJ0
+
+POS, NN1, VVZ, AV0, AJ0
+subject (*POS, NN1*, VVZ)
+verb => VVZ
+Complement (VVZ, ..., AJ0*)
+or
+Complement (VVZ, ..., *AV0, AJ0*)
+
+-----------------------
+4 
+They are hunting dogs.
+
+They ______ PNP
+are ______ VBB
+hunting ______ VVG
+dogs. ______ NN2
+
+PNP, VBB, VVG, NN2
+subject (*PNP*, VBB)
+verb => VBB
+Complement (VBB, ..., *NN2*)
+or
+Complement (VBB, ..., *VVG, NN2*)
+
+----------------------
+8 
+but it still can't analyze complex sentences like:
+
+but ______ CJC
+it ______ PNP
+still ______ AV0
+can't ______ VM1
+analyze ______ VVI
+complex ______ AJ0
+sentences ______ NN2
+like ______ PRP
+
+CJC, PNP, AV0, VM1, VVI, AJ0, NN2, PRP
+subject (*PNP*, ..., Vxx)
+
+verb => (*VMx, VVI*)
+or
+verb => (*VV1*)
+
+Complement (V*, ..., *NNx, NNx*)
+or
+Complement (V*, ..., *NNx*)
+
+---------------------
+9 
+Some of the most basic rules are like this:
+
+Some ______ DT0
+of ______ PRF
+the ______ AT0
+most ______ DT0
+basic ______ AJ0
+rules ______ NN2
+are ______ VBB
+like ______ PRP
+this ______ DT0
+
+DT0, PRF, AT0, DT0, AJ0, NN2, VBB, PRP, DT0
+
+subject (*AJ0, NN2*, VBB)
+verb => VBB
+Complement (VBB, ..., *DT0*)
+
+-----------------------
+9 
+Using these rules, pretty many sentences can be analyzed.
+is the same as:
+Pretty many sentences can be analyzed using these rules.
+
+Using ______ VVG
+these ______ DT0
+rules ______ NN2
+pretty ______ AJ0
+many ______ DT0
+sentences ______ NN2
+can ______ VM0
+be ______ VBI
+analyzed ______ VVN
+
+VVG, DT0, NN2, AJ0, DT0, NN2, VM0, VBI, VVN
+
+subject (VVG, ..., *DT0, NN2*, ..., VMO, VBI)
+verb => (*VMO, VBI, VVN*)
+Complement (VVG, DT0, ..., *Vxx*)
+
+-----------------------
+10  
+I do not really like snacks like chips or candy.
+
+I ______ PNP
+do ______ VDB
+not ______ XX0
+really ______ AV0
+like ______ VM0
+snacks ______ NN2
+like ______ PRP
+chips ______ NN2
+or ______ CJC
+candy. ______ NN1
+
+PNP, VDB, XX0, AV0, VM0, NN2, PRP, NN2, CJC, NN1
+subject (*PNP*)
+verb => (*PNP, (VBD), (XX0), (AV0), Vxx* )
+Complement (*Vxx, NNx, (CJC), NNx*)
+
+
+---------------------
+11 
+He is the one who won the Nobel Prize in 2014.
+
+He ______ PNP
+is ______ VBZ
+the ______ AT0
+one ______ PNI
+who ______ PNQ
+won ______ VVD
+the ______ AT0
+Nobel ______ NP
+Prize ______ NN1-TL
+in ______ AJ0
+2014. ______ CRD
+
+PNP, VBZ, AT0, PNI, PNQ, VVD, AT0,NP, NN1-TL, AJ0, CRD
+subject (*PNP*, ..., PNQ)
+verb => (*Vxx* )
+Complement (*Vxx, ..., NNx*)
+
+---------------------
+11 
+She told me that she loved me, which was a lie.
+
+She ______ PNP
+told ______ VVD
+me ______ PNP
+that ______ CJT
+she ______ PNP
+loved ______ VVD
+me ______ PNP
+which ______ DTQ
+was ______ VBD
+a ______ AT0
+lie. ______ NN1
+
+PNP, VVD, PNP, CJT, PNP, VVD, PNP, DTQ, VBD, AT0, NN1
+
+subject (????)
+verb => (????)
+Complement (????)
+
+-----------------------
+11 
+You would also need to add rules on infinitives and gerunds. 
+
+You ______ PNP
+would ______ VM0
+also ______ AV0
+need ______ VVB
+to ______ PRP
+add ______ VVB
+rules ______ NN2
+on ______ PRP
+infinitives ______ NN2
+and ______ CJC
+gerunds. ______ NN2
+
+PNP, VM0, AV0, VVB, PRP, VVB, NN2, PRP, NN2, CJC, NN2
+
+subject (????)
+verb => (????)
+Complement (????)
+
+---------------------
+13 It gave "She told me that she loved [me, which was a lie]". 
+
+It ______ PNP
+gave ______ VVD
+She ______ PPS
+told ______ VVD
+me ______ FW-PPO
+that ______ CJT
+she ______ PPS
+loved ______ VVD
+me ______ FW-PPO
+which ______ DTQ
+was ______ VBD
+a ______ AT0
+lie ______ NN1
+. ______ NN1
+
+subject (????)
+verb => (????)
+Complement (????)
+
+
+---------------------
+
+13 It is computers that brought the biggest change to our lives in history.
+
+It ______ PNP
+is ______ VBZ
+computers ______ NN2
+that ______ CJT
+brought ______ VVN
+the ______ AT0
+biggest ______ JJT
+change ______ VVI
+to ______ PRP
+our ______ DPS
+lives ______ NN2
+in ______ AJ0
+history. ______ NN1
+
+subject (????)
+verb => (????)
+Complement (????)
+
+---------------------
+13  Then you would build the structure of the sentence according to several rules.
+
+Then ______ AV0
+you ______ PPO
+would ______ VM0
+build ______ VVI
+the ______ AT0
+structure ______ NN1
+of ______ PRP
+the ______ AT0
+sentence ______ NN1
+according ______ PRP
+to ______ PRP
+several ______ DT0
+rules. ______ NN2
+
+subject (????)
+verb => (????)
+Complement (????)
+
+-----------------------
+14
+Like this, it is not easy to make this kind of thing work perfectly.
+
+
+Like ______ PRP
+this ______ DT0
+it ______ PNP
+is ______ VBZ
+not ______ XX0
+easy ______ AJ0
+to ______ PRP
+make ______ VVB
+this ______ DT0
+kind ______ NN1
+of ______ PRP
+thing ______ VVG
+work ______ NN1
+perfectly. ______ AV0
+
+
+subject (????)
+verb => (????)
+Complement (????)
+
+------------------
+16 You would need to add rules on clauses and conjunctions(like "while", "when" and "if"). 
+
+You ______ PPO-TL
+would ______ VM0
+need ______ VVB
+to ______ PRP
+add ______ VVB
+rules ______ NN2
+on ______ PRP
+clauses ______ NN2
+and ______ CJC
+conjunctions ______ NN2
+like ______ PRP
+while ______ CJS
+when ______ CJS
+and ______ CJC
+if ______ CJS
+. ______ NN1
+
+
+subject (????)
+verb => (????)
+Complement (????)
+
+---------------------
+16 By the way, the Stanford parser gave a wrong structure when I entered the last example. 
+
+By ______ PRP
+the ______ AT0
+way ______ NN1
+the ______ AT0
+Stanford ______ NP-TL
+parser ______ NN1
+gave ______ VVD
+a ______ ZZ0
+wrong ______ AJ0
+structure ______ NN1
+when ______ CJS
+I ______ ZZ0
+entered ______ VVD
+the ______ AT0
+last ______ ORD
+example. ______ NN1
+
+
+subject (????)
+verb => (????)
+Complement (????)
+
+---------------------
+17 After you added all the rules present in English, there comes more complex things to deal with.
+
+After ______ PRP
+you ______ PPO
+added ______ VVN
+all ______ DT0
+the ______ AT0
+rules ______ NN2
+present ______ NN1
+in ______ AJ0
+English ______ AJ0
+there ______ EX0
+comes ______ VVZ
+more ______ DT0
+complex ______ NN1
+things ______ NN2
+to ______ PRP
+deal ______ AJ0
+with. ______ PRP
+
+
+subject (????)
+verb => (????)
+Complement (????)
+
+-----------------------
+20 The program would have to be able to somehow figure out that the most likely one is the first one.
+
+The ______ AT0
+program ______ NN1
+would ______ VM0
+have ______ VHI
+to ______ PRP
+be ______ VBI
+able ______ AJ0
+to ______ PRP
+somehow ______ AV0
+figure ______ NN1
+out ______ PRP
+that ______ CJT
+the ______ AT0
+most ______ DT0
+likely ______ AV0
+one ______ PNI
+is ______ VBZ
+the ______ AT0
+first ______ ORD
+one. ______ PNI
+
+subject (????)
+verb => (????)
+Complement (????)
+
+-----------------------
+23 To implement full analysis of English sentences, first, you would need a dictionary which gives all possible parts of speech of a word.
+
+To ______ PRP
+implement ______ NN1
+full ______ AJ0
+analysis ______ NN2
+of ______ PRP
+English ______ AJ0
+sentences ______ NN2
+first ______ ORD
+you ______ PPO
+would ______ VM0
+need ______ VVB
+a ______ AT0
+dictionary ______ NN1
+which ______ DTQ
+gives ______ VVZ
+all ______ DT0
+possible ______ AJ0
+parts ______ NN2
+of ______ PRP
+speech ______ NN1
+of ______ PRP
+a ______ AT0
+word. ______ NN1
+
+subject (????)
+verb => (????)
+Complement (????)
+
+---------------------
+28  This sentence has two possible structures, thus producing two different meanings; One is that "hunting dogs" is an ADJP, and the other is that it is a NP.
+
+This ______ DT0
+sentence ______ NN1
+has ______ VHZ
+two ______ CRD
+possible ______ AJ0
+structures ______ NN2
+thus ______ AV0
+producing ______ VVG
+two ______ CRD
+different ______ AJ0
+meanings ______ NN2
+One ______ CRD
+is ______ VBZ
+that ______ CJT
+hunting ______ VVG
+dogs ______ NN2
+is ______ VBZ
+an ______ AT0
+ADJP ______ NN1
+and ______ CJC
+the ______ AT0
+other ______ PRP
+is ______ VBZ
+that ______ CJT
+it ______ PNP
+is ______ VBZ
+a ______ AT0
+NP. ______ NN1
+
+subject (????)
+verb => (????)
+Complement (????)
+
+-----------------------
+37 You would still need to add rules on verbs that take two objects(like "give" and "tell"), and verbs that take state of an object(like "look", "seem" and "get", also "make" in "I made you angry.") 
+
+You ______ PPO-TL
+would ______ VM0
+still ______ AV0
+need ______ VVB
+to ______ PRP
+add ______ VVB
+rules ______ NN2
+on ______ PRP
+verbs ______ NN2
+that ______ CJT
+take ______ VVI
+two ______ CRD
+objects ______ NN2
+like ______ PRP
+give ______ VVI
+and ______ CJC
+tell ______ VVB
+and ______ CJC
+verbs ______ NN2
+that ______ CJT
+take ______ VVI
+state ______ NN1
+of ______ PRP
+an ______ AT0
+object ______ NN1
+like ______ PRP
+look ______ NN1
+seem ______ VVB
+and ______ CJC
+get ______ VVB
+also ______ AV0
+make ______ VVB
+in ______ AJ0
+I ______ ZZ0
+made ______ VVN
+you ______ PPO
+angry. ______ AJ0
+
+subject (????)
+verb => (????)
+Complement (????)
+
+
+---------------------
+44
+(In this case, the "which was a lie" clause(an ADJP) describes the NP "that she loved me", but it's theoretically possible that the clause describes "me"(a pronoun is also a NP) or the whole part "She told me that she loved me". 
+
+
+In ______ AJ0
+this ______ DT0
+case ______ PRP
+the ______ AT0
+which ______ DTQ
+was ______ VBD
+a ______ AT0
+lie ______ NN1
+clause ______ NN1
+an ______ AT0
+ADJP ______ NN1
+describes ______ VVZ
+the ______ AT0
+NP ______ NN1
+that ______ CJT
+she ______ PPS
+loved ______ VVD
+me ______ FW-PPO
+but ______ CJC
+it's ______ PPS+BEZ
+theoretically ______ AV0
+possible ______ AJ0
+that ______ CJT
+the ______ AT0
+clause ______ NN1
+describes ______ VVZ
+me ______ FW-PPO
+a ______ AT0
+pronoun ______ NN1
+is ______ VBZ
+also ______ AV0
+a ______ AT0
+NP ______ NN1
+or ______ CJC
+the ______ AT0
+whole ______ NN1
+part ______ NN1
+She ______ PPS
+told ______ VVD
+me ______ FW-PPO
+that ______ CJT
+she ______ PPS
+loved ______ VVD
+me ______ FW-PPO
+. ______ NN1
+
+
+subject (????)
+verb => (????)
+Complement (????)
+
+-----------------------
+So I think what I would do would be building something like a graph representing possible structures according to the dictionary and the rules, while processing the sentence word-wise, and then applying taboo search to reduce the possibilities, and finally I would have to use statistical way or otherwise somehow make the computer understand the real-world situation in order to choose the most likely structure out of several possibilities left.
+
+So ______ AV0
+I ______ ZZ0
+think ______ VVB
+what ______ DTQ
+I ______ ZZ0
+would ______ VM0
+do ______ VDB
+would ______ VM0
+be ______ VBI
+building ______ VVG
+something ______ PN
+like ______ PRP
+a ______ AT0
+graph ______ NN1
+representing ______ VVG
+possible ______ AJ0
+structures ______ NN2
+according ______ PRP
+to ______ PRP
+the ______ AT0
+dictionary ______ NN1
+and ______ CJC
+the ______ AT0
+rules ______ NN2
+while ______ CJS
+processing ______ VVG
+the ______ AT0
+sentence ______ NN1
+word ______ NN1
+wise ______ AJ0
+and ______ CJC
+then ______ AV0
+applying ______ VVG
+taboo ______ AJ0
+search ______ NN1
+to ______ PRP
+reduce ______ VVI
+the ______ AT0
+possibilities ______ NN2
+and ______ CJC
+finally ______ AV0
+I ______ ZZ0
+would ______ VM0
+have ______ VHI
+to ______ PRP
+use ______ VVI
+statistical ______ AJ0
+way ______ NN1
+or ______ CJC
+otherwise ______ AV0
+somehow ______ AV0
+make ______ VVB
+the ______ AT0
+computer ______ NN1
+understand ______ VVI
+the ______ AT0
+real ______ AJ0
+world ______ NN1
+situation ______ NN1
+in ______ AJ0
+order ______ AV0
+to ______ PRP
+choose ______ VVB
+the ______ AT0
+most ______ DT0
+likely ______ AV0
+structure ______ NN1
+out ______ PRP
+of ______ PRP
+several ______ DT0
+possibilities ______ NN2
+left. ______ NN1
+
+
+subject (????)
+verb => (????)
+Complement (????)
+
+----------------------
+

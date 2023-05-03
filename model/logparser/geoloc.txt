@@ -1,0 +1,152 @@
+Your API Key
+8fcc5f0eef674accaa40aafe244f6867 
+
+https://ipgeolocation.io/
+juanpedro.lerouzic@gmail.com
+password 19566502
+
+<?php
+    $apiKey = "PUT_YOUR_API_KEY_HERE";
+    $ip = "CLIENT_IP_ADDRESS";
+    $location = get_geolocation($apiKey, $ip);
+    $decodedLocation = json_decode($location, true);
+    
+    echo "<pre>";
+    print_r($decodedLocation);
+    echo "</pre>";
+    function get_geolocation($apiKey, $ip, $lang = "en", $fields = "*", $excludes = "") {
+        $url = "https://api.ipgeolocation.io/ipgeo?apiKey=".$apiKey."&ip=".$ip."&lang=".$lang."&fields=".$fields."&excludes=".$excludes;
+        $cURL = curl_init();
+        curl_setopt($cURL, CURLOPT_URL, $url);
+        curl_setopt($cURL, CURLOPT_HTTPGET, true);
+        curl_setopt($cURL, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($cURL, CURLOPT_HTTPHEADER, array(
+            'Content-Type: application/json',
+            'Accept: application/json'
+        ));
+        return curl_exec($cURL);
+    }
+?>
+
+Example
+
+Here is an example to get the geolocation for a list of IP addresses and display the result as a table:
+
+<style>
+    table, th, tr, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 5px 30px;
+    }
+</style>
+
+<?php
+    $apiKey = "PUT_YOUR_API_KEY_HERE";
+    $ips = array("3.3.3.3", "4.4.4.4", "5.5.5.5", "6.6.6.6", "7.7.7.7");
+
+    echo "<table>";
+    echo "<tr>";
+    echo "<th>IP</th>";
+    echo "<th>Continent</th>";
+    echo "<th>Country</th>";
+    echo "<th>Organization</th>";
+    echo "<th>ISP</th>";
+    echo "<th>Languages</th>";
+    echo "<th>Is EU Member?</th>";
+    echo "<th>Currency</th>";
+    echo "<th>Timezone</th>";
+    echo "</tr>";
+
+    foreach ($ips as $ip) {
+        $location = get_geolocation($apiKey, $ip);
+        $decodedLocation = json_decode($location, true);
+
+        echo "<tr>";
+        echo "<td>".$decodedLocation['ip']."</td>";
+        echo "<td>".$decodedLocation['continent_name']." (".$decodedLocation['continent_code'].")</td>";
+        echo "<td>".$decodedLocation['country_name']." (".$decodedLocation['country_code2'].")</td>";
+        echo "<td>".$decodedLocation['organization']."</td>";
+        echo "<td>".$decodedLocation['isp']."</td>";
+        echo "<td>".$decodedLocation['languages']."</td>";
+        if($decodedLocation['is_eu'] == true) {
+            echo "<td>Yes</td>";
+        } else {
+            echo "<td>No</td>";
+        }
+        echo "<td>".$decodedLocation['currency']['name']."</td>";
+        echo "<td>".$decodedLocation['time_zone']['name']."</td>";
+        echo "</tr>";
+    }
+    echo "</table>";
+
+    function get_geolocation($apiKey, $ip, $lang = "en", $fields = "*", $excludes = "") {
+        $url = "https://api.ipgeolocation.io/ipgeo?apiKey=".$apiKey."&ip=".$ip."&lang=".$lang."&fields=".$fields."&excludes=".$excludes;
+        $cURL = curl_init();
+
+        curl_setopt($cURL, CURLOPT_URL, $url);
+        curl_setopt($cURL, CURLOPT_HTTPGET, true);
+        curl_setopt($cURL, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($cURL, CURLOPT_HTTPHEADER, array(
+            'Content-Type: application/json',
+            'Accept: application/json'
+        ));
+        return curl_exec($cURL);
+    }
+?>
+
+{
+    "ip": "8.8.8.8",
+    "hostname": "google-public-dns-a.google.com",
+    "continent_code": "NA",
+    "continent_name": "North America",
+    "country_code2": "US",
+    "country_code3": "USA",
+    "country_name": "United States",
+    "country_capital": "Washington",
+    "state_prov": "California",
+    "district": "",
+    "city": "Mountain View",
+    "zipcode": "94043",
+    "latitude": "37.4229",
+    "longitude": "-122.085",
+    "is_eu": false,
+    "calling_code": "+1",
+    "country_tld": ".us",
+    "languages": "en-US,es-US,haw,fr",
+    "country_flag": "https://ipgeolocation.io/static/flags/us_64.png",
+    "isp": "Level 3 Communications",
+    "connection_type": "",
+    "organization": "Google Inc.",
+    "geoname_id": "5375480",
+    "currency": {
+        "code": "USD",
+        "name": "US Dollar",
+        "symbol": "$"
+    },
+    "time_zone": {
+        "name": "America/Los_Angeles",
+        "offset": -8,
+        "current_time": "2019-01-14 03:30:00.135-0800",
+        "current_time_unix": 1547465400.135,
+        "is_dst": false,
+        "dst_savings": 1
+    }
+}
+
+* Number of visits, and number of unique visitors,
+* Visits duration and last visits,
+* Authenticated users, and last authenticated visits,
+* Days of week and rush hours (pages, hits, KB for each hour and day of week),
+* Domains/countries of hosts visitors (pages, hits, KB, 269 domains/countries detected, GeoIp detection),
+* Hosts list, last visits and unresolved IP addresses list,
+* Most viewed, entry and exit pages,
+* Worms attacks (5 worm's families),
+* Search engines, keyphrases and keywords used to find your site (The 115 most famous search engines are detected like yahoo, google, altavista, etc...),
+* HTTP errors (Page Not Found with last referrer, ...),
+* "added to favourites bookmarks".
+
+
+
